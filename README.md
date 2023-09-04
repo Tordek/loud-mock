@@ -30,7 +30,7 @@ describe("The OUT", () => {
         expect(mockedApi.realCall).toHaveBeenCalled()
     });
 
-    it("Depends on some API call but I forgot to mock it", async () => {
+    it("Depends on some API call but I remembered to mock it", async () => {
         const mockedApi = createMock<SomeApi>()
         const service = new SomeService(mockedApi);
 
