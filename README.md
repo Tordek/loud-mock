@@ -43,6 +43,24 @@ describe("The OUT", () => {
 })
 ```
 
+
+### For Nest.js
+
+When creating your Testing Module, add `useMocker`:
+
+```js
+const myTestModule = Test.createTestingModule({
+    imports: [RealModule],
+    controllers: [SomeController],
+    providers: [TheService]
+})
+    .useMocker((injectionToken) =>
+        createMock({ name: injectionToken?.toString()})
+    )
+```
+
+And you'll see exactly what you need to mock.
+
 ## Installation
 
 Just add a dependency as you would in your package manager of choice:
