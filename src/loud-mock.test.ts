@@ -6,11 +6,11 @@ describe("loud-mock", () => {
   });
 
   it("can be instantiated", () => {
-    expect(createMock({})).toBeDefined();
+    expect(createMock()).toBeDefined();
   });
 
   it("throws when accessing unmocked prop", () => {
-    const mock = createMock<{ abc: number }>({});
+    const mock = createMock<{ abc: number }>();
     expect(() => mock.abc).toThrow();
   });
 
@@ -25,7 +25,9 @@ describe("loud-mock", () => {
 
   it("allows passing an object with predefined props", () => {
     const mock = createMock({
-      preDefined: 5,
+      partial: {
+        preDefined: 5,
+      },
     });
 
     expect(mock.preDefined).toEqual(5);
@@ -40,10 +42,24 @@ describe("loud-mock", () => {
   });
 
   it("can be created inside a promise", async () => {
-    const mock = await Promise.resolve(createMock<{ overriden: number}>());
+    const mock = await Promise.resolve(createMock<{ overriden: number }>());
 
     mock.overriden = 7;
 
     expect(mock.overriden).toEqual(7);
-  })
+  });
+
+  it("logs the name of the property that was accessed", () => {
+    const mock = createMock<{ loggedMethod: number }>();
+    expect(() => mock.loggedMethod).toThrowError(
+      new Error("Missing mock for LoudMock.loggedMethod")
+    );
+  });
+
+  it("can be given a name for clarity", () => {
+    const mock = createMock<{ loggedMethod: number }>({ name: "NamedMock" });
+    expect(() => mock.loggedMethod).toThrowError(
+      new Error("Missing mock for NamedMock.loggedMethod")
+    );
+  });
 });
