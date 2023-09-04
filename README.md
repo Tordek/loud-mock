@@ -19,7 +19,7 @@ Optionally, you can pass an object containing initial values.
 
 describe("The OUT", () => {
     it("Depends on some API call but I forgot to mock it", async () => {
-        const mockedApi = loudMock<SomeApi>()
+        const mockedApi = createMock<SomeApi>()
         const service = new SomeService(mockedApi);
 
         await service.doWork(); // Oops! We forgot to mock the call.
@@ -31,7 +31,7 @@ describe("The OUT", () => {
     });
 
     it("Depends on some API call but I forgot to mock it", async () => {
-        const mockedApi = loudMock<SomeApi>()
+        const mockedApi = createMock<SomeApi>()
         const service = new SomeService(mockedApi);
 
         mockedApi.realCall = jest.fn(); // Just add a way to check the mock
