@@ -1,4 +1,4 @@
-export const createMock = <T extends object>(partial: T): T => {
+export const createMock = <T extends object>(partial: Partial<T> = {}): T => {
   const proxy = new Proxy(partial, {
     get: (obj, prop) => {
       if (Reflect.has(obj, prop)) {
@@ -9,5 +9,5 @@ export const createMock = <T extends object>(partial: T): T => {
     },
   });
 
-  return proxy;
+  return proxy as T;
 };
