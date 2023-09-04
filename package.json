@@ -1,6 +1,6 @@
 {
   "name": "loud-mock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A typesafe Mock that always explodes to avoid forgetting to explicitly mock methods.",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "ts-jest"
   ],
   "author": "Guillermo O. «Tordek» Freschi",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "devDependencies": {
     "@jest/globals": "^29.6.4",
     "@types/jest": "^29.5.4",
