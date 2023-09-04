@@ -1,0 +1,4 @@
+.eslintrc.cjs
+jest.config.ts
+coverage/
+dist/
