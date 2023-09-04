@@ -1,10 +1,11 @@
 {
   "name": "loud-mock",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A typesafe Mock that always explodes to avoid forgetting to explicitly mock methods.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p ./tsconfig.build.json",
     "test": "jest"
   },
   "keywords": [
