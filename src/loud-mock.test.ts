@@ -10,17 +10,13 @@ describe("loud-mock", () => {
   });
 
   it("throws when accessing unmocked prop", () => {
-    const mock = createMock({} as { abc: number });
+    const mock = createMock<{ abc: number }>({});
     expect(() => mock.abc).toThrow();
   });
 
-  it("allows methods to be mocked as expected with `spyOn`", () => {
-    const mock = createMock({
-      mockedMethod() {
-        return 0;
-      },
-    });
-    jest.spyOn(mock, "mockedMethod");
+  it("allows methods to be mocked", () => {
+    const mock = createMock<{ mockedMethod: () => number }>();
+    mock.mockedMethod = jest.fn();
 
     mock.mockedMethod();
 
@@ -36,7 +32,7 @@ describe("loud-mock", () => {
   });
 
   it("allows overriding a property by setting it directly", () => {
-    const mock = createMock({} as { overriden: number });
+    const mock = createMock<{ overriden: number }>();
 
     mock.overriden = 6;
 
