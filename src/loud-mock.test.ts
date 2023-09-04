@@ -38,4 +38,12 @@ describe("loud-mock", () => {
 
     expect(mock.overriden).toEqual(6);
   });
+
+  it("can be created inside a promise", async () => {
+    const mock = await Promise.resolve(createMock<{ overriden: number}>());
+
+    mock.overriden = 7;
+
+    expect(mock.overriden).toEqual(7);
+  })
 });

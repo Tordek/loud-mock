@@ -5,6 +5,8 @@ export const createMock = <T extends object>(partial: Partial<T> = {}): T => {
         return Reflect.get(obj, prop);
       }
 
+      if (prop === "then") return undefined;
+      
       throw new Error(`Missing mock for ${prop.toString()}`);
     },
   });
