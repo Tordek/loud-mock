@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc -p ./tsconfig.build-esm.json && tsc -p ./tsconfig.build-cjs.json",
-    "prepublishOnly": "npm run tsc",
+    "prepublishOnly": "npm run build",
     "test": "jest"
   },
   "keywords": [
