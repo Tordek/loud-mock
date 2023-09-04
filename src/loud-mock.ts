@@ -1,7 +1,3 @@
-export interface MockOptions {
-  name?: string;
-}
-
 export const createMock = <T extends object>(partial: T): T => {
   const proxy = new Proxy(partial, {
     get: (obj, prop) => {
