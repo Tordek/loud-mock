@@ -1,6 +1,6 @@
 {
   "name": "loud-mock",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A typesafe Mock that always explodes to avoid forgetting to explicitly mock methods.",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
