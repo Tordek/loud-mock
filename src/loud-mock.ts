@@ -2,11 +2,10 @@ export interface LoudMockOptions<T> {
   name?: string;
   partial?: Partial<T>;
 }
-export const createMock = <T extends object>(
-  { name, partial }: LoudMockOptions<T> = {
-    name: "LoudMock",
-  }
-): T => {
+export const createMock = <T extends object>({
+  name,
+  partial,
+}: LoudMockOptions<T> = {}): T => {
   const proxy = new Proxy(partial ?? ({} as Partial<T>), {
     get: (obj, prop) => {
       if (Reflect.has(obj, prop)) {
@@ -15,7 +14,9 @@ export const createMock = <T extends object>(
 
       if (prop === "then") return undefined;
 
-      throw new Error(`Missing mock for ${name}.${prop.toString()}`);
+      throw new Error(
+        `Missing mock for ${name ?? "LoudMock"}.${prop.toString()}`
+      );
     },
   });
 
